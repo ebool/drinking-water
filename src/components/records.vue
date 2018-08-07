@@ -1,12 +1,14 @@
 <template>
   <v-flex class="records-cont" pa-3>
-    <v-flex class="ma-2 msg-cont" v-for="i in getTodayHistory" :key="i.date">
-      <div class="time">{{getTime(i.date)}}</div>
-      <v-card class="card">
-        <v-card-title class="pr-0">"{{i.cup.name}}"으로 {{parse(i.cup.amount)}}L를 마셨습니다.</v-card-title>
-        <v-btn class="" flat icon @click="removeItem(i)"><v-icon>delete_outline</v-icon></v-btn>
-      </v-card>
-    </v-flex>
+    <transition-group tag="div" name="list">
+      <v-flex class="ma-2 msg-cont" v-for="i in getTodayHistory" :key="i.date">
+        <div class="time">{{getTime(i.date)}}</div>
+        <v-card class="card">
+          <v-card-title class="pr-0">"{{i.cup.name}}"으로 {{parse(i.cup.amount)}}L를 마셨습니다.</v-card-title>
+          <v-btn class="" flat icon @click="removeItem(i)"><v-icon>delete_outline</v-icon></v-btn>
+        </v-card>
+      </v-flex>
+    </transition-group>
   </v-flex>
 </template>
 
@@ -59,6 +61,17 @@ export default {
       display: flex;
       align-items: center;
     }
+  }
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .list-enter-active, .list-leave-active {
+    transition: all .3s;
+  }
+  .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(100%);
   }
 }
 </style>
