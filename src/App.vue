@@ -20,9 +20,11 @@
 import buttonCont from './components/button-cont.vue';
 import records from './components/records.vue';
 import waterBoard from './components/water-board.vue';
+import store from './store/index.js';
 
 export default {
   name: 'App',
+  store,
   components: {
     buttonCont,
     records,
