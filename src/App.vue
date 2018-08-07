@@ -29,6 +29,8 @@ export default {
     buttonCont,
     records,
     waterBoard
+  },
+  mounted () {
   }
 };
 </script>
