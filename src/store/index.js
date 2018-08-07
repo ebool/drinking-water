@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {filter, isToday, parseLiter} from '@/assets/utils.js';
+import {filter, map, isToday, parseLiter} from '@/assets/utils.js';
 
 Vue.use(Vuex);
 
@@ -13,19 +13,23 @@ const state = {
 const mutations = {
   addDrinkHistory (state, history) {
     state.drinkHistory.push(history);
+  },
+  removeDrinkHistory (state, history) {
+    let r = map(state.drinkHistory, (i) => { return i.date });
+    state.drinkHistory.splice(r.indexOf(history.date), 1);
   }
 }
 const getters = {
   recommendedAmount (state) {
-    console.log('state', state);
     return state.user.weight * 0.03;
   },
-  todayDrinkWater (state) {
-    let todayList = filter(state.drinkHistory, (i) => { return isToday(i.date) });
+  todayDrinkWater (state, getters) {
     let todayAmount = 0;
-    for (let i of todayList) { todayAmount += i.cup.amount; }
-    console.log(todayAmount);
+    for (let i of getters.todayDrinkHistory) { todayAmount += i.cup.amount; }
     return parseLiter(todayAmount);
+  },
+  todayDrinkHistory (state) {
+    return filter(state.drinkHistory, (i) => { return isToday(i.date) });
   }
 }
 const actions = {}
