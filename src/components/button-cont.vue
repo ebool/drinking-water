@@ -11,8 +11,8 @@ export default {
   data () {
     return {
       buttons: [
-        {name: 'wework 머그컵', amount: '350', type: '0'},
-        {name: '허벌라이프', amount: '1000', type: '1'}
+        {name: 'wework 머그컵', amount: 350, type: '0'},
+        {name: '허벌라이프', amount: 1000, type: '1'}
       ]
     }
   },
