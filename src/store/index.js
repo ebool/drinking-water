@@ -8,7 +8,14 @@ const state = {
   user: {
     weight: 80
   },
-  drinkHistory: []
+  drinkHistory: [],
+  buttons: {
+    list: [
+      {name: 'wework 머그컵', amount: 350, type: '0'},
+      {name: '허벌라이프', amount: 1000, type: '1'}
+    ],
+    lastPK: 1
+  }
 }
 const mutations = {
   addDrinkHistory (state, history) {
@@ -20,6 +27,13 @@ const mutations = {
   },
   setDrinkHistory (state, history) {
     state.drinkHistory = history;
+  },
+  addButton (state, {name, amount}) {
+    state.buttons.list.push({
+      name,
+      amount,
+      type: String(++state.buttons.lastPK)
+    })
   }
 }
 const getters = {
@@ -33,6 +47,9 @@ const getters = {
   },
   todayDrinkHistory (state) {
     return filter(state.drinkHistory, (i) => { return isToday(i.date) });
+  },
+  getButtons (state) {
+    return state.buttons.list;
   }
 }
 const actions = {}
