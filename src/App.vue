@@ -30,7 +30,14 @@ export default {
     records,
     waterBoard
   },
+  watch: {
+    '$store.state.drinkHistory': (d) => {
+      window.localStorage.setItem('drinkHistory', JSON.stringify(d));
+    }
+  },
   mounted () {
+    let history = window.localStorage.getItem('drinkHistory');
+    this.$store.commit('setDrinkHistory', JSON.parse(history) || []);
   }
 };
 </script>

@@ -17,6 +17,9 @@ const mutations = {
   removeDrinkHistory (state, history) {
     let r = map(state.drinkHistory, (i) => { return i.date });
     state.drinkHistory.splice(r.indexOf(history.date), 1);
+  },
+  setDrinkHistory (state, history) {
+    state.drinkHistory = history;
   }
 }
 const getters = {
