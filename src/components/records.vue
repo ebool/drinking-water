@@ -44,7 +44,7 @@ export default {
 
 <style scoped lang="scss">
 .records-cont {
-  overflow: auto;
+  overflow-x: hidden;
   max-height: 90vh;
 
   .msg-cont {
