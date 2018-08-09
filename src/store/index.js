@@ -37,6 +37,13 @@ const mutations = {
   },
   setButtons (state, buttons) {
     this.state.buttons = buttons;
+  },
+  removeButtons (state, buttons) {
+    for (let item of buttons) {
+      let btnList = map(state.buttons.list, (i) => { return i.type });
+      let index = btnList.indexOf(item);
+      if (index >= 0) state.buttons.list.splice(index, 1);
+    }
   }
 }
 const getters = {

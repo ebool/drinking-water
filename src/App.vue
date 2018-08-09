@@ -46,7 +46,6 @@ export default {
     this.$store.commit('setDrinkHistory', JSON.parse(history) || []);
 
     let buttons = window.localStorage.getItem('buttons');
-    console.log('buttons', buttons);
     this.$store.commit('setButtons', JSON.parse(buttons) || this.$store.state.buttons);
   }
 };
