@@ -12,8 +12,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-            <v-btn color="blue darken-1" flat @click.native="submit">Save</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="close">닫기</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="submit">추가</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -47,9 +47,14 @@ export default {
     },
     submit () {
       if (this.$refs.form.validate()) {
-        this.dialog = false;
         this.addButton({name: this.buttonName, amount: parseInt(this.bottleAmount)});
+        this.dialog();
       }
+    },
+    close () {
+      this.buttonName = '';
+      this.bottleAmount = '';
+      this.dialog = false;
     },
     ...mapMutations(['addDrinkHistory', 'addButton'])
   },
