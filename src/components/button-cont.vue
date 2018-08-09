@@ -1,5 +1,5 @@
 <template>
-  <v-flex class="text-md-center" d-inline >
+  <v-flex class="text-md-center pa-3" d-inline >
     <v-btn outline round color="primary" small v-for="i in getButtons" :key="i.type" @click="drink(i)">{{i.name}} ({{i.amount}}ml)</v-btn>
     <v-dialog v-model="addDialog" persistent max-width="500px" value>
       <v-btn small fab color="primary" slot="activator"><v-icon>library_add</v-icon></v-btn>
