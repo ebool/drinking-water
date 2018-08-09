@@ -34,6 +34,9 @@ const mutations = {
       amount,
       type: String(++state.buttons.lastPK)
     })
+  },
+  setButtons (state, buttons) {
+    this.state.buttons = buttons;
   }
 }
 const getters = {

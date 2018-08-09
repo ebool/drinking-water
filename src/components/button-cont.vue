@@ -12,7 +12,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="close">닫기</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="dismiss">닫기</v-btn>
             <v-btn color="blue darken-1" flat @click.native="submit">추가</v-btn>
           </v-card-actions>
         </v-form>
@@ -48,10 +48,10 @@ export default {
     submit () {
       if (this.$refs.form.validate()) {
         this.addButton({name: this.buttonName, amount: parseInt(this.bottleAmount)});
-        this.dialog();
+        this.dismiss();
       }
     },
-    close () {
+    dismiss () {
       this.buttonName = '';
       this.bottleAmount = '';
       this.dialog = false;

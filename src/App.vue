@@ -33,11 +33,21 @@ export default {
   watch: {
     '$store.state.drinkHistory': (d) => {
       window.localStorage.setItem('drinkHistory', JSON.stringify(d));
+    },
+    '$store.state.buttons': {
+      handler: (d) => {
+        window.localStorage.setItem('buttons', JSON.stringify(d));
+      },
+      deep: true
     }
   },
   mounted () {
     let history = window.localStorage.getItem('drinkHistory');
     this.$store.commit('setDrinkHistory', JSON.parse(history) || []);
+
+    let buttons = window.localStorage.getItem('buttons');
+    console.log('buttons', buttons);
+    this.$store.commit('setButtons', JSON.parse(buttons) || this.$store.state.buttons);
   }
 };
 </script>
