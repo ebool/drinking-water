@@ -7,8 +7,8 @@
       <v-toolbar-title>How much you drink</v-toolbar-title>
     </v-toolbar>
     <v-container fill-height pa-0 fluid>
-      <v-layout column>
-        <v-layout><water-board /></v-layout>
+      <v-layout column style="flex: 20">
+        <v-layout style="flex: 10"><water-board /></v-layout>
         <v-layout><button-cont /></v-layout>
       </v-layout>
       <v-layout><records /></v-layout>

@@ -22,6 +22,8 @@ export default {
 
 <style lang="scss" scoped>
 .water-board-cont {
+  background-color: aqua;
+
   .text {
     display: flex;
     flex-direction: column;

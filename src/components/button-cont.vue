@@ -1,6 +1,6 @@
 <template>
-  <v-flex class="button-cont">
-    <v-btn outline round color="primary" v-for="i in getButtons" :key="i.type" @click="drink(i)">{{i.name}} ({{i.amount}}ml)</v-btn>
+  <v-flex class="text-md-center" d-inline >
+    <v-btn outline round color="primary" small v-for="i in getButtons" :key="i.type" @click="drink(i)">{{i.name}} ({{i.amount}}ml)</v-btn>
     <v-dialog v-model="addDialog" persistent max-width="500px" value>
       <v-btn small fab color="primary" slot="activator"><v-icon>library_add</v-icon></v-btn>
       <v-card>
@@ -93,9 +93,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.button-cont {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 </style>
