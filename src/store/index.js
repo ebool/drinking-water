@@ -60,6 +60,9 @@ const getters = {
   },
   getButtons (state) {
     return state.buttons.list;
+  },
+  todayDrinkWaterProportion (state) {
+    return 40;
   }
 }
 const actions = {}

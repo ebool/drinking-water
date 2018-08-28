@@ -1,19 +1,22 @@
 <template>
   <v-layout class="water-board-cont">
-    <v-flex class="text">
+    <!-- <v-flex class="text">
       <div>오늘 마신 물의 양 / 오늘 마셔야 할 물의 양</div>
       <div>{{todayDrinkWater}}L / {{recommendedAmount}}L</div>
-    </v-flex>
-    <!-- <v-flex class="visual">
-      <div>물이 차오르는 그릇</div>
     </v-flex> -->
+    <bottle></bottle>
+
   </v-layout>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import Bottle from './bottle.vue';
 
 export default {
+  components: {
+    Bottle
+  },
   computed: {
     ...mapGetters(['recommendedAmount', 'todayDrinkWater'])
   }
@@ -22,7 +25,10 @@ export default {
 
 <style lang="scss" scoped>
 .water-board-cont {
-  background-color: aqua;
+  // background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .text {
     display: flex;

@@ -16,5 +16,5 @@ export function isToday (date) {
   today.getDate() === d.getDate();
 }
 export function parseLiter (n) {
-  return (n * 0.001).toFixed(2);
+  return parseFloat((n * 0.001).toFixed(2));
 }
