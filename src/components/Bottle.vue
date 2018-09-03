@@ -43,7 +43,7 @@ export default {
     overflow: visible;
   }
   .water-fill {
-    animation: wave .7s infinite linear, fill-up 10s infinite ease-out alternate;
+    animation: wave .7s infinite linear, fill-up 10s infinite linear alternate;
   }
   @keyframes wave {
     0% { x: -400px; }
@@ -52,10 +52,10 @@ export default {
   @keyframes fill-up {
     0% {
       height: 0;
-      y: 160px;
+      y: 140px;
     }
     100% {
-      height: 180px;
+      height: 140px;
       y: 0px;
     }
   }
