@@ -42,7 +42,6 @@ export default {
   .svg {
     overflow: visible;
   }
-  
   .water-fill {
     animation: wave .7s infinite linear, fill-up 10s infinite ease-out alternate;
   }
