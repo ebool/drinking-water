@@ -50,7 +50,7 @@ export default {
       removeBtnList: [],
       nameRules: [
         v => !!v || '버튼 이름은 꼭 입력해야해!',
-        v => (v && v.length <= 10) || '너무 길어! 10자 이하로.'
+        v => (v && v.length <= 7) || '너무 길어! 7자 이하로.'
       ],
       amountRules: [
         v => !!v || '물병의 용량은 꼭 입력해야해!',
