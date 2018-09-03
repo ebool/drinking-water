@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 const state = {
   user: {
-    weight: 80
+    weight: ''
   },
   drinkHistory: [],
   buttons: {
@@ -18,6 +18,9 @@ const state = {
   }
 }
 const mutations = {
+  setUserWeight (state, weight) {
+    state.user = { weight }
+  },
   addDrinkHistory (state, history) {
     state.drinkHistory.push(history);
   },
@@ -44,6 +47,9 @@ const mutations = {
       let index = btnList.indexOf(item);
       if (index >= 0) state.buttons.list.splice(index, 1);
     }
+  },
+  setUser (state, user) {
+    state.user = user;
   }
 }
 const getters = {
