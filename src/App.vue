@@ -83,7 +83,6 @@ export default {
     },
     '$store.state.user': {
       handler: (d) => {
-        console.log(d);
         window.localStorage.setItem('user', JSON.stringify(d));
       },
       deep: true
@@ -105,14 +104,14 @@ export default {
         this.userInfoDialog = false;
       }
     },
-    ...mapMutations(['setUserWeight', 'setUser'])
+    ...mapMutations(['setUserWeight', 'setUser', 'setButtons', 'setDrinkHistory'])
   },
   mounted () {
     let history = window.localStorage.getItem('drinkHistory');
-    this.$store.commit('setDrinkHistory', JSON.parse(history) || []);
+    this.setDrinkHistory(JSON.parse(history) || []);
 
     let buttons = window.localStorage.getItem('buttons');
-    this.$store.commit('setButtons', JSON.parse(buttons) || this.$store.state.buttons);
+    this.setButtons(JSON.parse(buttons) || this.$store.state.buttons);
 
     let user = window.localStorage.getItem('user');
     this.setUser(JSON.parse(user) || {});
