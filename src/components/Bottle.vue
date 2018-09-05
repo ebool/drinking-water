@@ -41,7 +41,7 @@ export default {
   },
   watch: {
     todayDrinkWaterProportion (v) {
-      if (!v) return;
+      if (isNaN(v)) return;
       let diff = v - this.dashboardData;
       let termTime = 100;
       let totalTime = 500;
