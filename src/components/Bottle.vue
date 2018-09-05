@@ -9,7 +9,7 @@
         <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
           <path fill="white" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
         </pattern>
-        <text id="text" min-width="320px" transform="matrix(1 0 0 1 -8.0684 116.7852)" font-size="130">{{todayDrinkWaterProportion}}%</text>
+        <text id="text" min-width="320px" transform="matrix(1 0 0 1 -8.0684 116.7852)" font-size="130">{{dashboardData.toFixed(1)}}%</text>
         <mask id="text_mask">
           <use x="0" y="0" xlink:href="#text" opacity="1" fill="#3498db"/>
         </mask>
@@ -25,13 +25,42 @@
 import { mapGetters } from 'vuex';
 
 export default {
+  data () {
+    return {
+      dashboardData: 0
+    }
+  },
   computed: {
     todayDrinkWaterProportion () {
       let result = (this.todayDrinkWater / this.recommendedAmount) * 100;
       if (result >= 100) return 100;
-      return result.toFixed(1);
+      // return result.toFixed(1);
+      return result;
     },
     ...mapGetters(['recommendedAmount', 'todayDrinkWater'])
+  },
+  watch: {
+    todayDrinkWaterProportion (v) {
+      let diff = v - this.dashboardData;
+      let termTime = 100;
+      let totalTime = 500;
+      let term = diff / termTime;
+
+      let timer = setInterval(() => {
+        this.dashboardData += term;
+        if (diff > 0) {
+          if (this.dashboardData >= v) {
+            this.dashboardData = v;
+            clearInterval(timer);
+          }
+        } else {
+          if (this.dashboardData <= v) {
+            this.dashboardData = v;
+            clearInterval(timer);
+          }
+        }
+      }, totalTime / termTime)
+    }
   }
 }
 </script>
